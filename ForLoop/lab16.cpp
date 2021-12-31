@@ -14,7 +14,7 @@ int main(){
 	// tinh tong
 	for(int i = 1; i<=n; i++){
         float s1 = 0;
-        for(int j = 1; j<=n; j++){
+        for(int j = 1; j<=i; j++){
             s1+= j;
         }
         s+= (float)pow(x,i)/s1;
