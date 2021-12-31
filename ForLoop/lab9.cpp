@@ -13,6 +13,6 @@ int main(){
 	for(int i = 2; i<=n; i++){
 		T*=i;// ép kiểu
 	}
-	cout<<s;// in tong
+	cout<<T;// in tong
 	return 0;
 }
