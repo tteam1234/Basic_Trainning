@@ -11,5 +11,9 @@ int main(){
     for(auto i = std::begin(array);i!=std::end(array);i++){
         cout<<*i<<" ";        
     }
+    cout<<endl;
+    for(int element:array){
+        cout<<element<<" ";
+    }
     return 0;
 }
