@@ -5,6 +5,8 @@ void nhap(int a[], int &n);
 void xuat(int a[], int n);// dinh nghia
 void lietKeChan(int a[], int n);
 void lietKeLe(int a[], int n);
+int demChan(int a[],int n);
+int demLe(int a[],int n);
 int main(){
     // khai bao
     int a[MAX];
@@ -14,6 +16,8 @@ int main(){
     xuat(a,n);// goi ham
     lietKeChan(a,n);
     lietKeLe(a,n);
+    cout<<"Co "<<demChan(a,n)<<" so chan"<<endl;
+    cout<<"Co "<<demLe(a,n)<<" so le"<<endl;
     return 0;
 }
 void nhap(int a[], int &n){
@@ -45,4 +49,22 @@ void lietKeLe(int a[], int n){
         }
     }
     cout<<endl;
+}
+int demChan(int a[],int n){
+    int dem = 0;
+    for(int i=0; i<n; i++){
+        if(a[i]%2==0){
+            dem++;
+        }
+    }
+    return dem;
+}
+int demLe(int a[],int n){
+    int dem = 0;
+    for(int i=0; i<n; i++){
+        if(a[i]%2!=0){
+            dem++;
+        }
+    }
+    return dem;
 }
