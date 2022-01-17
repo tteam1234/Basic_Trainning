@@ -13,6 +13,7 @@ class Student{
     Student(string id, string name, float math, float physical, float chemistry);
     void display();
     float getGPA();
+    string getRating();
 };
 Student::Student(){
     this->id = "None";
@@ -32,13 +33,24 @@ void Student::display(){
     cout<<"id: "<<this->id<<endl;
     cout<<"name: "<<this->name<<endl;
     cout<<"mark: "<<this->math<<" "<<this->physical<<" "<<this->chemistry<<endl;
-    cout<<"gpa: "<<getGPA();
+    cout<<"gpa: "<<getGPA()<<endl;
 }
 float Student::getGPA(){
     return (this->math+this->physical+this->chemistry)/3;
 }
+string Student::getRating(){
+    float gpa = getGPA();
+    string rating = "GIOI";
+    if(gpa<5){
+        rating = "KEM";       
+    } else if(gpa>=5 && gpa<=7){
+        rating = "TRUNG BINH";
+    }
+    return rating;
+}
 int main(){
     Student student = Student("001","Minh Anh",7,8,7);
     student.display();
+    cout<<student.getRating();
     return 0;
 }
