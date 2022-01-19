@@ -1,5 +1,5 @@
 //nhap vao 1 mang va in ra so chinh phuong
-// 4 9 16 ...
+// 2 3 5 7 11 ...  
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -7,6 +7,7 @@ using namespace std;
 void nhapMang(int a[],int &n); //khai bao ham nhap
 void xuatMang(int a[],int n); //khai bao ham xuat
 bool laSoChinhPhuong(int a);//khai bao ham kiem tra so chinh phuong
+bool laSoNguyenTo(int a);// khai bao ham la so nguyen to
 void lietKeSoChinhPhuong(int a[],int n);// khai bao ham liet ke so chinh phuong
 bool tonTaiSoChinhPhuong(int a[],int n);//khai bao ham ton tai so chinh phuong
 int demSoChinhPhuong(int a[],int n);//khai bao ham dem so chinh phuong
@@ -49,6 +50,16 @@ void xuatMang(int a[],int n)//xay dung ham xuat
 }
 bool laSoChinhPhuong(int a){//xay dung ham so chinh phuong
     return sqrt(a) == (int)sqrt(a);
+}
+bool laSoNguyenTo(int a){//xay dung ham la so nguyen to
+    bool lasonguyento = true;
+    for(int i = 2;i<a;i++){
+        if(a%i==0){
+            lasonguyento = false;
+            break;
+        }
+    }
+    return lasonguyento;
 }
 void lietKeSoChinhPhuong(int a[],int n){//xay dung ham liet ke so chinh phuong
     for(int i=0;i<n;i++){
