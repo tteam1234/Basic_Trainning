@@ -3,7 +3,7 @@ class CPoint{
         float x, y;
     public:
         //method
-}
+};
 int main(){
     return 0;
 }
