@@ -1,11 +1,13 @@
 #include <iostream>
-using namespace std;// cho 1 mảng a gồm n phần tử. Tìm kiếm phần tử có giá trị n bằng các thuật toán tìm kiếm
-bool binarySearch(int a[], int n, int x);
+using namespace std;
+bool binarySearch(int a[], int n, int x);// tim kiem nhi phan
+bool linearSearch(int a[], int n, int x);// tim kiem tuyen tinh
 int main(){
     int a[] = {1,2,3,3,5,6,7,8,9,10,11,12};
     int x = 5;
     int n = (sizeof a) / (sizeof a[0]);
     cout<<(binarySearch(a,n,x)?"Tồn tại":"không tồn tài");
+    cout<<(linearSearch(a,n,x)?"Tồn tại":"không tồn tại");
     return 0;
 }
 bool binarySearch(int a[], int n, int x){
@@ -22,6 +24,16 @@ bool binarySearch(int a[], int n, int x){
             left = mid+1;
         }
         else{
+            exist = true;
+            break;
+        }
+    }
+    return exist;
+}
+bool linearSearch(int a[], int n, int x){
+    bool exist = false;
+    for(int i=0; i<n; i++){
+        if(a[i]==x){
             exist = true;
             break;
         }
