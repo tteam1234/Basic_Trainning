@@ -39,24 +39,29 @@ void nhap(Student students[], int &numbers){
 }
 void menu(Student students, int &numbers){
     int luachon;
-    // in ra man hinh menu
-    cout<<"------Menu--------"<<endl;
-    cout<<"1.nhap lai"<<endl;
-    // nhap lua chon
-    cout<<"Chon chuc nang: ";
-    cin>>luachon;
-    // xet chuc nang: 
-    switch(luachon){
-        case 1:
-        {
-            nhap(students, numbers);
-            break;
+    do{
+        // in ra man hinh menu
+        cout<<"------Menu--------"<<endl;
+        cout<<"1.nhap lai"<<endl;
+        // nhap lua chon
+        cout<<"Chon chuc nang: ";
+        cin>>luachon;
+        // xet chuc nang: 
+        switch(luachon){
+            case 1:
+            {
+                nhap(students, numbers);
+                break;
+            }
+            default:
+            {
+                cout<<"Lua chon khong hop le!"<<endl;
+                break;
+            }
         }
-        default:
-        {
-            cout<<"Lua chon khong hop le!"<<endl;
-            break;
-        }
-    }
+        // xem nguoi dung co muon tiep tuc khong?
+        cout<<"Nhan 1 de thoat:";
+        cin>>luachon;
+    }while(luachon!=1);
     
 }
