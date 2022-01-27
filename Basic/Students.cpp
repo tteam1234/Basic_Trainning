@@ -11,6 +11,8 @@ typedef struct Student{// dinh nghia kieu Student
 void menu(Student students[], int &numbers);
 void nhap(Student &student);
 void nhap(Student students[], int &numbers);
+void xuat(Student student);
+void xuat(Student students[], int numbers);
 int main(){
     Student students[MAX];
     int numbers;
@@ -38,12 +40,22 @@ void nhap(Student students[], int &numbers){
         nhap(students[i]);
     }
 }
+void xuat(Student student){
+        cout<<"('id': "<<student.id<<", 'ho ten': "<<student.name<<", 'gioi tinh': "<<student.gender<<", 'gpa': "<<student.gpa<<")"<<endl;
+}
+void xuat(Student students[], int numbers){
+    for(int i=0; i<numbers; i++){
+        cout<<"'Sinh vien "<<i+1<<"': ";
+        xuat(students[i]);
+    }
+}
 void menu(Student students[], int &numbers){
     int luachon;
     do{
         // in ra man hinh menu
         cout<<"------Menu--------"<<endl;
         cout<<"1.nhap lai"<<endl;
+        cout<<"2. xuat danh sach"<<endl;
         // nhap lua chon
         cout<<"Chon chuc nang: ";
         cin>>luachon;
@@ -52,6 +64,11 @@ void menu(Student students[], int &numbers){
             case 1:
             {
                 nhap(students, numbers);
+                break;
+            }
+            case 2:
+            {
+                xuat(students, numbers);
                 break;
             }
             default:
