@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #define MAX 30
 using namespace std;
 // dinh nghia
@@ -13,6 +14,7 @@ void nhap(Student &student);
 void nhap(Student students[], int &numbers);
 void xuat(Student student);
 void xuat(Student students[], int numbers);
+vector<Student> timSinhVienTheoGPA(Student students[], int numbers, float gpa);
 int main(){
     Student students[MAX];
     int numbers;
@@ -56,6 +58,7 @@ void menu(Student students[], int &numbers){
         cout<<"------Menu--------"<<endl;
         cout<<"1.nhap lai"<<endl;
         cout<<"2. xuat danh sach"<<endl;
+        cout<<"3. tim sinh vien theo gpa"<<endl;
         // nhap lua chon
         cout<<"Chon chuc nang: ";
         cin>>luachon;
@@ -71,6 +74,17 @@ void menu(Student students[], int &numbers){
                 xuat(students, numbers);
                 break;
             }
+            case 3:
+            {
+                float gpa;
+                cout<<"GPA can tim: ";
+                cin>>gpa;
+                vector<Student> result = timSinhVienTheoGPA(students, numbers, gpa);
+                for(Student student:result){
+                    xuat(student);
+                }
+                break;
+            }
             default:
             {
                 cout<<"Lua chon khong hop le!"<<endl;
@@ -80,6 +94,14 @@ void menu(Student students[], int &numbers){
         // xem nguoi dung co muon tiep tuc khong?
         cout<<"Nhan 1 de thoat:";
         cin>>luachon;
-    }while(luachon!=1);
-    
+    }while(luachon!=1);    
+}
+vector<Student> timSinhVienTheoGPA(Student students[], int numbers, float gpa){
+    vector<Student> result;
+    for(int i=0;i<numbers;i++){
+        if(students[i].gpa == gpa) {
+            result.push_back(students[i]);
+        }
+    }
+    return result;
 }
