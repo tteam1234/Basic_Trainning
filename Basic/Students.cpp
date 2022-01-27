@@ -12,6 +12,8 @@ void nhap(Student &student);
 void nhap(Student students[], int &numbers);
 void xuat(Student student);
 void xuat(Student students[], int numbers);
+bool tonTaiSinhVien(Student students[], int numbers, int id);
+Student timKiemSinhVienTheoMa(Student students[], int &numbers, int id);//id = 3
 int main(){
     Student students[MAX];// khai bao mang students
     int numbers;
@@ -50,4 +52,23 @@ void xuat(Student students[], int numbers){
         cout<<"Sinh vien thu "<<i+1<<" :"<<endl;
         xuat(students[i]); // xuat sinh vien thu i      
     }
+}
+bool tonTaiSinhVien(Student students[], int numbers, int id){
+    bool tontai = false;// nhan dinh
+    for(int i = 0; i < numbers; i++){
+        if(students[i].id == id){
+            tontai = true;
+            break;
+        }
+    }
+    return tontai;
+}
+Student timKiemSinhVienTheoMa(Student students[], int &numbers, int id){// 003
+    Student result;
+    for(int i = 0; i < numbers; i++){
+        if(students[i].id == id){
+            result = students[i];
+        }
+    }    
+    return result;
 }
