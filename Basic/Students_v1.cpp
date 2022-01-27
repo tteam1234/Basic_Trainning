@@ -16,8 +16,9 @@ void xuat(Student student);
 void xuat(Student students[], int numbers);
 void xuat(Student student);
 void xuat(Student students[],Student numbers);
+float timGPAThapNhat(Student students[], int numbers);
 float timGPACaoNhat(Student students[], int numbers);
-vector<Student> timSinhVienCoGPACaoNhat(Student students[], int numbers);
+vector<Student> timSinhVienTheoGPA(Student students[], int numbers, float gpa);
 void menu(Student students[], int &numbers);
 int main(){
     Student students[MAX];
@@ -64,6 +65,7 @@ void menu(Student students[], int &numbers){
         cout<<"1.nhap lai"<<endl;
         cout<<"2.xuat"<<endl;
         cout<<"3. tim sinh vien co diem cao nhat"<<endl;
+        cout<<"4. tim sinh vien co diem thap nhat"<<endl;
         // nhap lua chon
         cout<<"Chon chuc nang: ";
         cin>>luachon;
@@ -81,13 +83,25 @@ void menu(Student students[], int &numbers){
             }
             case 3:
             {
-                vector<Student> result = timSinhVienCoGPACaoNhat(students, numbers);
+                float max = timGPACaoNhat(students, numbers);
+                vector<Student> result = timSinhVienTheoGPA(students, numbers,max);
                 cout<<"Danh sach sinh vien co diem cao nhat:"<<endl;
                 for(Student student : result){
                     xuat(student);
                 }
                 break;
             }
+            case 4:
+            {
+                float min = timGPAThapNhat(students, numbers);
+                vector<Student> result = timSinhVienTheoGPA(students, numbers,min);
+                cout<<"Danh sach sinh vien co diem thap nhat:"<<endl;
+                for(Student student : result){
+                    xuat(student);
+                }
+                break;
+            }
+            
             default:
             {
                 cout<<"Lua chon khong hop le!"<<endl;
@@ -101,18 +115,27 @@ void menu(Student students[], int &numbers){
 }
 float timGPACaoNhat(Student students[], int numbers){
     float max = students[0].gpa;
-    for(int i=1;i<=numbers;i++){
+    for(int i=1;i<numbers;i++){
         if(students[i].gpa>max){
             max = students[i].gpa;
         }
     }
     return max;
 }
-vector<Student> timSinhVienCoGPACaoNhat(Student students[], int numbers){
+float timGPAThapNhat(Student students[], int numbers){
+    float min = students[0].gpa;
+    for(int i=1;i<numbers;i++){
+        if(students[i].gpa<min){
+            min = students[i].gpa;
+        }
+    }
+    return min;
+}
+
+vector<Student> timSinhVienTheoGPA(Student students[], int numbers, float gpa){
     vector<Student> result;
-    float max = timGPACaoNhat(students, numbers);
     for(int i=0;i<numbers;i++){
-        if(students[i].gpa == max){
+        if(students[i].gpa == gpa){
             result.push_back(students[i]);
         }
     }
