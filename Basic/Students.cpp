@@ -8,6 +8,7 @@ typedef struct Student{
     string gender;
     float gpa;
 };
+void menu(Student students[], int &numbers);
 void nhap(Student &student);
 void nhap(Student students[], int &numbers);
 void xuat(Student student);
@@ -17,8 +18,8 @@ Student timKiemSinhVienTheoMa(Student students[], int &numbers, int id);//id = 3
 int main(){
     Student students[MAX];// khai bao mang students
     int numbers;
-    nhap(students,numbers);
-    xuat(students,numbers);
+    nhap(students,numbers);// nhap
+    menu(students,numbers);
     return 0;
 }
 void nhap(Student &student){
@@ -71,4 +72,40 @@ Student timKiemSinhVienTheoMa(Student students[], int &numbers, int id){// 003
         }
     }    
     return result;
+}
+void menu(Student students[], int &numbers){
+    int luachon;
+    do{
+        // xu li
+        cout<<"---------Menu---------"<<endl;
+        cout<<"1. Nhap lai"<<endl;
+        cout<<"2. xuat danh sach"<<endl;
+        cout<<"3. tim kiem sinh vien theo ma"<<endl;
+        // chon chuc nang
+        cout<<"Chon chuc nang: ";
+        cin>>luachon;
+        switch(luachon){
+            case 1: {
+                nhap(students,numbers);
+                break;
+            }
+            case 2: {
+                xuat(students,numbers);
+                break;
+            }
+            case 3: {
+                int idcantim;
+                cout<<"Nhap ma sinh vien can tim: ";
+                cin>>idcantim;
+                if(tonTaiSinhVien(students,numbers,idcantim)){
+                    xuat(timKiemSinhVienTheoMa(students,numbers,idcantim));
+                } else {
+                    cout<<"Khong co sinh vien can tim!";
+                }
+            }
+        }
+        // nhap lua chon de thoat
+        cout<<"Nhan phim 1 de thoat!";
+        cin>>luachon;
+    }while(luachon!=1);
 }
