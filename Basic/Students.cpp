@@ -8,6 +8,7 @@ typedef struct Student{// dinh nghia kieu Student
     string gender;
     float gpa;
 };
+void menu(Student students, int &numbers);
 void nhap(Student &student);
 void nhap(Student students[], int &numbers);
 int main(){
@@ -35,4 +36,11 @@ void nhap(Student students[], int &numbers){
         cout<<"Sinh vien thu "<<i+1<<" : "<<endl;
         nhap(students[i]);
     }
+}
+void menu(Student students, int &numbers){
+    int luachon;
+    // in ra man hinh menu
+    cout<<"------Menu--------"<<endl;
+    cout<<"1.nhap lai"<<endl;
+    
 }
