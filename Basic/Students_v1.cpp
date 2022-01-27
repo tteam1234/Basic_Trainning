@@ -1,6 +1,7 @@
 // nhap 1 danh sach sinh vien
 // dinh nghia struct
 #include<iostream>
+#include<vector>
 #define MAX 30
 using namespace std;
 typedef struct Student{
@@ -15,8 +16,9 @@ void xuat(Student student);
 void xuat(Student students[], int numbers);
 void xuat(Student student);
 void xuat(Student students[],Student numbers);
+float timGPACaoNhat(Student students[], int numbers);
+vector<Student> timSinhVienCoGPACaoNhat(Student students[], int numbers);
 void menu(Student students[], int &numbers);
-
 int main(){
     Student students[MAX];
     int numbers;
@@ -61,6 +63,7 @@ void menu(Student students[], int &numbers){
         cout<<"------Menu--------"<<endl;
         cout<<"1.nhap lai"<<endl;
         cout<<"2.xuat"<<endl;
+        cout<<"3. tim sinh vien co diem cao nhat"<<endl;
         // nhap lua chon
         cout<<"Chon chuc nang: ";
         cin>>luachon;
@@ -76,6 +79,15 @@ void menu(Student students[], int &numbers){
                 xuat(students, numbers);
                 break;
             }
+            case 3:
+            {
+                vector<Student> result = timSinhVienCoGPACaoNhat(students, numbers);
+                cout<<"Danh sach sinh vien co diem cao nhat:"<<endl;
+                for(Student student : result){
+                    xuat(student);
+                }
+                break;
+            }
             default:
             {
                 cout<<"Lua chon khong hop le!"<<endl;
@@ -86,4 +98,23 @@ void menu(Student students[], int &numbers){
         cout<<"Nhan 1 de thoat:";
         cin>>luachon;
     }while(luachon!=1);    
+}
+float timGPACaoNhat(Student students[], int numbers){
+    float max = students[0].gpa;
+    for(int i=1;i<=numbers;i++){
+        if(students[i].gpa>max){
+            max = students[i].gpa;
+        }
+    }
+    return max;
+}
+vector<Student> timSinhVienCoGPACaoNhat(Student students[], int numbers){
+    vector<Student> result;
+    float max = timGPACaoNhat(students, numbers);
+    for(int i=0;i<numbers;i++){
+        if(students[i].gpa == max){
+            result.push_back(students[i]);
+        }
+    }
+    return result;
 }
