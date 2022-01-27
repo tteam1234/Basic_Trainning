@@ -19,6 +19,9 @@ void xuat(Student students[],Student numbers);
 float timGPAThapNhat(Student students[], int numbers);
 float timGPACaoNhat(Student students[], int numbers);
 vector<Student> timSinhVienTheoGPA(Student students[], int numbers, float gpa);
+void swap(Student &student1, Student &student2);
+void sapXepTangDan(Student students[], int numbers);
+void sapXepGiamDan(Student students[], int numbers);
 void menu(Student students[], int &numbers);
 int main(){
     Student students[MAX];
@@ -66,6 +69,8 @@ void menu(Student students[], int &numbers){
         cout<<"2.xuat"<<endl;
         cout<<"3. tim sinh vien co diem cao nhat"<<endl;
         cout<<"4. tim sinh vien co diem thap nhat"<<endl;
+        cout<<"5. sap xep tang dan"<<endl;
+        cout<<"6. sap xep giam dan"<<endl;
         // nhap lua chon
         cout<<"Chon chuc nang: ";
         cin>>luachon;
@@ -99,6 +104,20 @@ void menu(Student students[], int &numbers){
                 for(Student student : result){
                     xuat(student);
                 }
+                break;
+            }
+            case 5:
+            {
+                sapXepTangDan(students, numbers);
+                cout<<"Danh sach sinh vien sau khi sap xep tang:"<<endl;
+                xuat(students,numbers);
+                break;
+            }
+            case 6:
+            {
+                sapXepGiamDan(students, numbers);
+                cout<<"Danh sach sinh vien sau khi sap xep giam dan:"<<endl;
+                xuat(students,numbers);
                 break;
             }
             
@@ -140,4 +159,27 @@ vector<Student> timSinhVienTheoGPA(Student students[], int numbers, float gpa){
         }
     }
     return result;
+}
+void swap(Student &student1, Student &student2){
+    Student temp = student1;
+    student1 = student2;
+    student2 = temp;
+}
+void sapXepTangDan(Student students[], int numbers){
+    for(int i=0;i<numbers-1;i++){
+        for(int j=i;j<numbers;j++){
+            if(students[i].gpa>students[j].gpa){
+                swap(students[i],students[j]);               
+            }
+        }
+    }
+}
+void sapXepGiamDan(Student students[], int numbers){
+    for(int i=0;i<numbers-1;i++){
+        for(int j=i;j<numbers;j++){
+            if(students[i].gpa<students[j].gpa){
+                swap(students[i],students[j]);               
+            }
+        }
+    }
 }
