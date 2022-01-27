@@ -8,13 +8,14 @@ typedef struct Student{// dinh nghia kieu Student
     string gender;
     float gpa;
 };
-void menu(Student students, int &numbers);
+void menu(Student students[], int &numbers);
 void nhap(Student &student);
 void nhap(Student students[], int &numbers);
 int main(){
     Student students[MAX];
     int numbers;
     nhap(students,numbers);
+    menu(students,numbers);
     return 0;
 }
 void nhap(Student &student){
@@ -37,7 +38,7 @@ void nhap(Student students[], int &numbers){
         nhap(students[i]);
     }
 }
-void menu(Student students, int &numbers){
+void menu(Student students[], int &numbers){
     int luachon;
     do{
         // in ra man hinh menu
