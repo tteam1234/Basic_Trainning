@@ -42,5 +42,21 @@ void menu(Student students, int &numbers){
     // in ra man hinh menu
     cout<<"------Menu--------"<<endl;
     cout<<"1.nhap lai"<<endl;
+    // nhap lua chon
+    cout<<"Chon chuc nang: ";
+    cin>>luachon;
+    // xet chuc nang: 
+    switch(luachon){
+        case 1:
+        {
+            nhap(students, numbers);
+            break;
+        }
+        default:
+        {
+            cout<<"Lua chon khong hop le!"<<endl;
+            break;
+        }
+    }
     
 }
