@@ -8,6 +8,9 @@ int main(){
     if(ofs.is_open()){
         ofs<<data;
     }
+    else{
+        cout<<"file không tồn tại!"<<endl;
+    }
     ofs.close();
     return 0;
 }

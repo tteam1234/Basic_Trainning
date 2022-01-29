@@ -2,6 +2,7 @@
 // dinh nghia struct
 #include<iostream>
 #include<vector>
+#include<fstream>
 #define MAX 30
 using namespace std;
 typedef struct Student{
@@ -12,6 +13,7 @@ typedef struct Student{
 };
 void nhap(Student &student);
 void nhap(Student students[], int &numbers);
+void vietVaoFile(Student student[], int &numbers, string path);
 void xuat(Student student);
 void xuat(Student students[], int numbers);
 void xuat(Student student);
@@ -71,6 +73,7 @@ void menu(Student students[], int &numbers){
         cout<<"4. tim sinh vien co diem thap nhat"<<endl;
         cout<<"5. sap xep tang dan"<<endl;
         cout<<"6. sap xep giam dan"<<endl;
+        cout<<"7. viet vao file"<<endl;
         // nhap lua chon
         cout<<"Chon chuc nang: ";
         cin>>luachon;
@@ -120,7 +123,12 @@ void menu(Student students[], int &numbers){
                 xuat(students,numbers);
                 break;
             }
-            
+            case 7:
+            {
+                string path = "Basic/Student_v1/data.out";
+                vietVaoFile(students, numbers,path);
+                break;
+            }
             default:
             {
                 cout<<"Lua chon khong hop le!"<<endl;
@@ -182,4 +190,11 @@ void sapXepGiamDan(Student students[], int numbers){
             }
         }
     }
+}
+void vietVaoFile(Student student[], int &numbers, string path){
+    ofstream ofs(path);
+    for(int i=0;i<numbers;i++){
+        ofs<<student[i].id<<","<<student[i].name<<","<<student[i].gpa<<","<<student[i].gpa<<","<<endl;
+    }
+    ofs.close();
 }
