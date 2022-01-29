@@ -13,7 +13,7 @@ typedef struct Student{
 };
 void nhap(Student &student);
 void nhap(Student students[], int &numbers);
-void vietVaoFile(Student student[], int &numbers, string path);
+void vietVaoFile(Student students[], int &numbers, string path);
 void xuat(Student student);
 void xuat(Student students[], int numbers);
 void xuat(Student student);
