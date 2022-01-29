@@ -28,5 +28,5 @@ int main(){
     A.setX(3);
     A.setY(5);
     cout<<"("<<A.getX()<<","<<A.getY()<<")"<<endl;
-    return 0;
+    return 0;2
 }
