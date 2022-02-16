@@ -7,7 +7,7 @@ typedef struct PhanSo{
 void nhap(PhanSo &phanso);
 void xuat(PhanSo phanso);
 void menu(PhanSo phanso);// dinh nghia ham menu
-int main(){
+int main(){e
     PhanSo phanso;
     nhap(phanso);
     menu(phanso);
